@@ -29,8 +29,8 @@ will generate the tree from the infos in LouisXIVfamily.txt, starting from
 
 """
 
-__author__ = "Adrien Vergé, Bodhi Wang"
-__copyright__ = "Copyright 2013 Adrien Verg, 2019 Bodhi Wang"
+__author__ = "Adrien Vergé, Bodhi Wang, Ryan Ng"
+__copyright__ = "Copyright 2013 Adrien Verg, 2019 Bodhi Wang, 2021 Ryan Ng"
 __license__ = "MIT"
 __version__ = "1.0"
 
