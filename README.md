@@ -87,4 +87,10 @@ It will generate the tree from the infos in `LouisXIVfamily.txt`, starting from
     
 ## Notes
 
-May have to change encoding scheme (possible if using Notepad++) as per this article: https://community.notepad-plus-plus.org/topic/17226/wrong-encoding
+- May have to change encoding scheme (possible if using Notepad++) as per this article: https://community.notepad-plus-plus.org/topic/17226/wrong-encoding
+- If one inserts 4 or more generations, tree might get unbalanced and so lines might not look aesthetic.
+
+
+## Modifications to original
+- Remove surname suffix at end of the name (i.e. `《陈》`)
+- Change main styling of line to `ortho` (takes the "family tree" shape more) to allow for more generations
