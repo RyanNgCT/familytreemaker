@@ -63,7 +63,28 @@ python -m familytree.familytreemaker -a "王灿文" -v2 -o LouisXIVfamily.dot Lo
     dot -Tsvg -o LouisXIVfamily.svg LouisXIVfamily.dot
 ``` 
 
+\* if code fails to run, try omitting the quotes in the name (i.e. `"王灿文"` -> `王灿文`
+
 It will generate the tree from the infos in `LouisXIVfamily.txt`, starting from
 *王灿文* and saving the image in `LouisXIVfamily.svg`.
 
 ![result: LouisXIVfamily.svg](./LouisXIVfamily.svg)
+
+## Prerequisites
+
+* Python 3.x < 3.10
+* [GraphViz](https://graphviz.org/)
+* Notepad++ (recommended, but not necessary, for `utf-8` and `ANSI` support).
+* Windows Chinese Language Pack
+* Registry change for Windows 10 (if you use US/UK English as a default language).
+    * Add string `Autorun` with value `chpc 936` for Simplified Chinese (SG/Chinese) on command prompt startup
+    * Reopen cmd
+
+![image](https://user-images.githubusercontent.com/48358569/142719316-e1c54965-c99a-4970-81e6-3e372b99d81a.png)
+
+![image](https://user-images.githubusercontent.com/48358569/142719435-dfb5c676-4d8e-463a-a71d-bf2938eda2c2.png)
+
+    
+## Notes
+
+May have to change encoding scheme (possible if using Notepad++) as per this article: https://community.notepad-plus-plus.org/topic/17226/wrong-encoding
