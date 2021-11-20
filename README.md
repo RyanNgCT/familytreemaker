@@ -74,7 +74,7 @@ It will generate the tree from the infos in `LouisXIVfamily.txt`, starting from
 ## Prerequisites
 
 * Python 3.x < 3.10
-* [GraphViz](https://graphviz.org/)
+* [GraphViz](https://graphviz.org/) (installing through `pip`, compiling from source or the provided `.msi` is fine.)
 * Notepad++ (recommended, but not necessary, for `utf-8` and `ANSI` support).
 * Windows Chinese Language Pack
 * Registry change for Windows 10 (if you use US/UK English as a default language).
