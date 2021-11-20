@@ -6,7 +6,7 @@ This program creates family tree graphs from simple text files.
 The input file format is very simple, you describe persons of your family line
 by line, children just have to follow parents in the file. Persons can be
 repeated as long as they keep the same name or id. An example is given in the
-file `LouisXIVfamily.txt`.
+file `LouisXIVfamily.txt` (you can create your own seperate file in this case like what I did but I have not committed this info).
 
 Note: This branch version is optimized for chinese (and has been further modified). If other language for 
       input text file is used, command option gender (-g) has to be used to
