@@ -8,11 +8,12 @@ by line, children just have to follow parents in the file. Persons can be
 repeated as long as they keep the same name or id. An example is given in the
 file `LouisXIVfamily.txt`.
 
-Note: This branch version is optimized for chinese. If other language for 
+Note: This branch version is optimized for chinese (and has been further modified). If other language for 
       input text file is used, command option gender (-g) has to be used to
       specify words of male and female, since their default values are set
       as "男" and "女" instead of origin "M" and "F".  
 
+Credits to: Adrien Vergé and Bodhi Wang
 
 Installation
 ------------
