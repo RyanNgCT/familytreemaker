@@ -402,13 +402,12 @@ class Family:
 		gen = [ancestor]
 
 		if self.outmode == 0:
-            """Attempted Modifications
-            '\tranksep = .8;\n'+
-            '\tnodesep = .8;\n'+
-            '\tnode [ width = 1.1 ];\n' + 
-            '\toutputorder="edgesfirst";\n' +  
-            """
-            
+                ###Attempted Modifications
+                ###'\tranksep = .8;\n'+
+                ###'\tnodesep = .8;\n'+
+                ###'\tnode [ width = 1.1 ];\n' + 
+                ###'\toutputorder="edgesfirst";\n' +  
+                
             # mainly modified this portion
 			print('digraph {\n' + '\tsplines=ortho;\n' + '\toutputorder="edgesfirst";\n' +'\tedge [ penwidth = 1.5 ];\n'+  '\tnode [shape=box];\n' + '\tedge [dir=none];\n')
 		else:
@@ -518,3 +517,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+
