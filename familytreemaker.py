@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Copyright (C) 2013 Adrien Verg, 2019 Bodhi Wang
+# Modified Ryan Ng (2021)
 #
 # Optimized for chinese support, and add functions to output DOT into file with
 # three levels.
-# Modified by Bodhi Wang
-# Oct 25, 2019
+
+# Warning: some issues when plotting the 4th layer
 
 """familytreemaker
 
@@ -105,8 +106,9 @@ class Person:
 		elif infolevel == 2 and 'deathday' in self.attr:
 			deathday = str(self.attr['deathday'])
 
-		if 'surname' in self.attr:
-			label += '\\n« ' + self.attr['surname'] + ' »'
+        # can uncomment as necessary
+		# if 'surname' in self.attr:
+			# label += '\\n« ' + self.attr['surname'] + ' »'
 		if infolevel > 0 and 'birthday' in self.attr:
 			label += '\\n' + birthday
 			if 'deathday' in self.attr:
@@ -119,8 +121,8 @@ class Person:
 		opts.append('style=filled')
 		#opts.append('fillcolor=' + ('女' in self.attr and 'bisque' or
 		#			('男' in self.attr and 'azure2' or 'white')))
-		opts.append ('fillcolor=' + (Family.gender['female'] in self.attr and 'bisque' or
-									(Family.gender['male'] in self.attr and 'azure2' or 'white')))
+		opts.append ('fillcolor=' + (Family.gender['f'] in self.attr and 'pink' or
+									(Family.gender['m'] in self.attr and 'aqua' or 'white')))
 
 		graph_label = (self.id + '[' + ','.join (opts) + ']')
 		return graph_label
@@ -158,14 +160,14 @@ class Family:
 
 	everybody = {}
 	households = []
-	gender = {'male':'男','female':'女'}
+	gender = {'m':'男','f':'女'}
 
 	invisible = '[shape=circle,label="",height=0.01,width=0.01]';
 
 	def __init__(self, infolevel = 0, outmode = 0, gender = ["男","女"]):
 		self.briefind, self.outmode = (infolevel, outmode)
 		if len (gender) >= 2:
-			type(self).gender['male'], type(self).gender['female'] = (gender[0], gender[1])
+			type(self).gender['m'], type(self).gender['f'] = (gender[0], gender[1])
 
 	def add_person(self, string):
 		"""Adds a person to self.everybody, or update his/her info if this
@@ -265,7 +267,7 @@ class Family:
 				continue
 			for h in p.households:
 				next_gen.extend(h.kids)
-				# append mari/femme
+				# append mari/fme
 
 		return next_gen
 
@@ -400,13 +402,17 @@ class Family:
 		gen = [ancestor]
 
 		if self.outmode == 0:
-			print('digraph {\n' + \
-		    	  '\tnode [shape=box];\n' + \
-		   		   '\tedge [dir=none];\n')
+            """Attempted Modifications
+            '\tranksep = .8;\n'+
+            '\tnodesep = .8;\n'+
+            '\tnode [ width = 1.1 ];\n' + 
+            '\toutputorder="edgesfirst";\n' +  
+            """
+            
+            # mainly modified this portion
+			print('digraph {\n' + '\tsplines=ortho;\n' + '\toutputorder="edgesfirst";\n' +'\tedge [ penwidth = 1.5 ];\n'+  '\tnode [shape=box];\n' + '\tedge [dir=none];\n')
 		else:
-			yield 'digraph {\n' + \
-				   '\tnode [shape=box];\n' + \
-				   '\tedge [dir=none];\n'
+			yield 'digraph {\n' + '\tsplines=ortho;\n' + '\toutputorder="edgesfirst";\n' +'\tedge [ penwidth = 1.5 ];\n'+ '\tnode [shape=box];\n' + '\tedge [dir=none];\n'
 
 		for p in self.everybody.values():
 			#pprint(p.graphviz())
@@ -486,7 +492,7 @@ def main():
 
 	# Create the family
 	family = Family(infolevel, outmode, gender=gender)
-
+    
 	# Populate the family
 	with open (args.input, 'r', encoding='utf-8') as f:
 		family.populate(f)
@@ -506,9 +512,9 @@ def main():
 		with open(args.outfile, "w", encoding="utf-8") as f:
 			for i in family.output_descending_tree(ancestor):
 				f.write(str(i)+"\n")
+                
 
 	sys.exit (0)
 
 if __name__ == '__main__':
 	main()
-
